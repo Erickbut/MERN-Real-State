@@ -7,8 +7,9 @@ export default function Header() {
             <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
                 <Link to={'/'}>
                     <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
-                        <span className='text-red-500'>GIGA</span>
-                        <span className='text-black'>Business</span>
+                        <img className=' w-5 h-8 sm:w-8 sm:h-8 mr-2 hidden sm:block' src="/logoGIGA.png" alt="" />
+                        <span className='text-red-500 mr-1'>GIGA</span>
+                        <span className='text-black'>Business Group</span>
                     </h1>
                 </Link>
                 <form className='bg-slate-100 p-3 rounded-lg flex items-center'>
