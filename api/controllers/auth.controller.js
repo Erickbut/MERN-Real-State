@@ -10,6 +10,6 @@ export const signup = async (req, res, next) => {
         res.status(201).json("Usuario creado con éxito!");
     } catch (error) {
         next(error);
-    };
-}
+    }
+};
 
