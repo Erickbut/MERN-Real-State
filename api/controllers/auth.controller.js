@@ -9,7 +9,7 @@ export const signup = async (req, res, next) => {
         await newUser.save()
         res.status(201).json("Usuario creado con éxito!");
     } catch (error) {
-        next(error)
+        next(error);
     };
 }
 
