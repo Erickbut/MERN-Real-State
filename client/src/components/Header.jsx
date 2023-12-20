@@ -12,10 +12,10 @@ export default function Header() {
                         <span className='text-black'>Business Group</span>
                     </h1>
                 </Link>
-                <form className='bg-slate-100 p-3 rounded-lg flex items-center'>
+                <form className='bg-slate-50 p-3 rounded-lg flex items-center'>
                     <input type="text" placeholder='Buscar...'
                         className='bg-transparent focus:outline-none w-24 sm:w-64' />
-                    <FaSearch className='text-slate-600'></FaSearch>
+                    <FaSearch className='text-slate-700'></FaSearch>
                 </form>
                 <ul className='flex gap-4'>
                     <Link to={'/'}>
