@@ -15,7 +15,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
-    }
+    },
+    avatar: {
+        type: String,
+        default: "https://e7.pngegg.com/pngimages/328/599/png-clipart-male-avatar-user-profile-profile-heroes-necktie-thumbnail.png"
+    },
 }, { timestamps: true });
 
 const User = mongoose.model('User', userSchema)
