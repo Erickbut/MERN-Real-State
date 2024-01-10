@@ -1,7 +1,14 @@
 import React from 'react'
-
-export default function About() {
+import BubblesBackground from '../styles/BubblesBackground'
+const About = () => {
     return (
-        <div>About</div>
+        <div>
+            <div style={{ zIndex: -1 }}>
+                ABOUT PAGE
+            </div>
+            <BubblesBackground />
+        </div>
     )
 }
+
+export default About

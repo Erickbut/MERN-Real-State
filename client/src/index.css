@@ -3,6 +3,5 @@
 @import 'tailwindcss/utilities';
 
 body {
-    background-color: #d3d3d3;
-
+    background-color: hsl(0, 0%, 83%);
 }

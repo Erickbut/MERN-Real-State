@@ -1,7 +1,13 @@
 import React from 'react'
+import BubblesBackground from '../styles/BubblesBackground'
 
 export default function Home() {
     return (
-        <div>Home</div>
+        <div>
+            <div style={{ zIndex: -1 }}>
+                ABOUT PAGE
+            </div>
+            <BubblesBackground />
+        </div>
     )
 }

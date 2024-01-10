@@ -1,0 +1,111 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+$bubble-count: 50;
+$sway-type: "sway-left-to-right", "sway-right-to-left";
+body {
+    background: linear-gradient(to bottom,
+            hsla(0, 100%, 40%, 0.8) 0%,
+            hsla(0, 100%, 0%, 0.0) 100%);
+    margin: 0;
+}
+
+
+@function random_range($min, $max) {
+    $rand: random();
+    $random_range: $min + floor($rand * (($max - $min) + 1));
+    @return $random_range;
+}
+
+@function sample($list) {
+    @return nth($list, random(length($list)));
+}
+
+.bubbles {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bubble {
+    position: absolute;
+    left: var(--bubble-left-offset);
+    bottom: -75%;
+    display: block;
+    width: var(--bubble-radius);
+    height: var(--bubble-radius);
+    border-radius: 50%;
+    animation: float-up var(--bubble-float-duration) var(--bubble-float-delay) ease-in infinite;
+
+    //! COLOR DE LAS BURBUJAS ES BACKGROUND
+
+    &::before {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('https://dochub.com/m/shared-document/erickbutron1/orO7lgeVL0OGgpJVjMP2p5/asset-2-png?dt=yPu_R3zjEL5w2jh73awf')center/cover;
+        border-radius: 50%;
+        /* Escala la imagen a la mitad para compensar el mayor tamaño del contenedor */
+        transform-origin: center;
+        /* Asegura que la escala sea desde el centro */
+        animation: var(--bubble-sway-type) var(--bubble-sway-duration) var(--bubble-sway-delay) ease-in-out alternate infinite;
+        animation: rotate 10s linear infinite;
+    }
+
+    @for $i from 0 through $bubble-count {
+        &:nth-child(#{$i}) {
+            --bubble-left-offset: #{random_range(0vw, 100vw)};
+            --bubble-radius: #{random_range(1vw, 10vw)};
+            --bubble-float-duration: #{random_range(6s, 12s)};
+            --bubble-sway-duration: #{random_range(4s, 6s)};
+            --bubble-float-delay: #{random_range(0s, 4s)};
+            --bubble-sway-delay: #{random_range(0s, 4s)};
+            --bubble-sway-type: #{sample($sway-type)};
+        }
+    }
+}
+
+@keyframes float-up {
+    to {
+        transform: translateY(-175vh);
+    }
+}
+
+@keyframes sway-left-to-right {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
+
+@keyframes sway-right-to-left {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-360deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
