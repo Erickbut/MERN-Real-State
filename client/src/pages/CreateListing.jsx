@@ -7,6 +7,9 @@ import {
 } from 'firebase/storage';
 import { app } from '../firebase';
 
+import BubblesBackground from '../styles/BubblesBackground';
+import '../styles/DefaultBubbles.css';
+
 export default function CreateListing() {
 
     const [files, setFiles] = useState([])
@@ -82,6 +85,11 @@ export default function CreateListing() {
     }
 
     return (
+
+        <div className=' bubbles-background-container '>
+            <BubblesBackground />
+            <div className='absolute top-0 left-0 w-full h-full scrollable-content-container '>
+
         <main className=' p-3 max-w-4xl mx-auto my-auto'>
             <h1 className='text-3xl font-semibold text-center my-7'>
                 Crear Inmueble
@@ -199,10 +207,9 @@ export default function CreateListing() {
                         Crear Publicación
                     </button>
                 </div>
-
-
-
             </form>
         </main>
+        </div>
+        </div>
     );
 }
