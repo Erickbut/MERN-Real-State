@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 export default function Header() {
     const { currentUser } = useSelector(state => state.user)
     return (
-        <header className=' bg-gray-300 shadow-md'>
+        <header className=' bg-gradient-to-r from-white to-black via-black bg-opacity-90 shadow-md'>
             <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
                 <Link to='/'>
                     <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
@@ -18,17 +18,17 @@ export default function Header() {
                     <input
                         type="text"
                         placeholder='Buscar...'
-                        className='bg-transparent focus:outline-none w-24 sm:w-64' />
-                    <FaSearch className='text-slate-700'></FaSearch>
+                        className=' text-black bg-transparent focus:outline-none w-24 sm:w-64' />
+                    <FaSearch className='text-black'></FaSearch>
                 </form>
                 <ul className='flex gap-4'>
                     <Link to={'/'}>
-                        <li className='hidden sm:inline text-black hover:underline'>
+                        <li className='hidden sm:inline text-white hover:underline'>
                             Inicio
                         </li>
                     </Link>
                     <Link to='/about'>
-                        <li className='hidden sm:inline text-black hover:underline'>
+                        <li className='hidden sm:inline text-white hover:underline'>
                             Sobre Nosotros
                         </li>
                     </Link>

@@ -7,6 +7,8 @@ import {
     signInFailure
 } from '../redux/user/userSlice';
 import OAuth from '../components/OAuth';
+import BubblesBackground from '../styles/BubblesBackground';
+import '../styles/DefaultBubbles.css';
 
 export default function SignIn() {
     const [formData, setFormData] = useState({});
@@ -43,27 +45,39 @@ export default function SignIn() {
         }
     };
     return (
-        <div className='p-3 max-w-lg mx-auto'>
-            <h1 className='text-3xl text-center font-semibold my-7'>Iniciar Sesión</h1>
-            <form onSubmit={handleSubmit} className='flex flex-col gap-4 '>
-                <input onChange={handleChange} className='border p-3 rounded-lg' id='email' placeholder='correo' type="email" />
-                <input onChange={handleChange} className='border p-3 rounded-lg' id='password' placeholder='contraseña' type="password" />
-                <button
-                    disabled={loading}
-                    className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
-                >
-                    {loading ? 'Cargando...' : 'Iniciar Sesión'}
-                </button>
-                <OAuth />
-            </form>
-            <div className='flex gap-2 mt-5'>
-                <p>No tienes cuenta?</p>
-                <Link to={"/sign-up"}>
-                    <span className='text-blue-500'>Registrarse</span>
-                </Link>
+
+        <div className='bubbles-background-container'>
+            <BubblesBackground />
+            <div className='absolute top-0 left-0 w-full h-full '>
+
+                <div className='p-3 max-w-lg mx-auto'>
+                    <h1 className='text-3xl text-center font-semibold my-7'>Iniciar Sesión</h1>
+                    <form onSubmit={handleSubmit} className='flex flex-col gap-4 '>
+                        <input onChange={handleChange} className='border p-3 rounded-lg' id='email' placeholder='correo' type="email" />
+                        <input onChange={handleChange} className='border p-3 rounded-lg' id='password' placeholder='contraseña' type="password" />
+                        <button
+                            disabled={loading}
+                            className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'
+                        >
+                            {loading ? 'Cargando...' : 'Iniciar Sesión'}
+                        </button>
+                        <OAuth />
+                    </form>
+                    <div className='flex gap-2 mt-5'>
+                        <p>No tienes cuenta?</p>
+                        <Link to={"/sign-up"}>
+                            <span className='text-blue-500'>Registrarse</span>
+                        </Link>
+                    </div>
+                    {error && <p className='text-red-500 mt-5'>{error}</p>}
+                </div>
+
+
+
             </div>
-            {error && <p className='text-red-500 mt-5'>{error}</p>}
         </div>
+
+
     )
 }
 

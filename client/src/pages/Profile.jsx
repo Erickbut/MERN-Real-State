@@ -11,6 +11,12 @@ import { updateUserStart, updateUserSuccess, updateUserFailure, deleteUserFailur
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CreateListing from './CreateListing';
+
+
+import BubblesBackground from '../styles/BubblesBackground';
+import '../styles/DefaultBubbles.css';
+
+
 export default function Profile() {
     const fileRef = useRef(null);
     const { currentUser, loading, error } = useSelector((state) => state.user);
@@ -115,55 +121,62 @@ export default function Profile() {
     }
 
     return (
-        <div className='p-3 max-w-lg mx-auto'>
-            <h1 className='text-3xl font-semibold text-center my-7'>Profile</h1>
-            <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-                <input onChange={(e) => setFile(e.target.files[0])} type="file" ref={fileRef} hidden accept='image/*' />
-                <img onClick={() => fileRef.current.click()}
-                    src={formData.avatar || currentUser.avatar} alt="profile"
-                    className='rounded-full h-24 w-24 object-cover
-                cursor-pointer self-center mt-2'/>
-                <p className='text-sm self-center'>
-                    {fileUploadError ?
-                        (<span className='text-red-700'>
-                            Error al cargar imagen (la imagen debe ser menor a 2 mb)
-                        </span>)
-                        : filePerc > 0 && filePerc < 100 ? (
-                            <span className='text-slate-700'>
-                                {`Subiendo ${filePerc}%`}
-                            </span>)
-                            : filePerc === 100 ? (
-                                <span className='text-green-700'>
-                                    Imagen cargada con éxito!
-                                </span>)
-                                : (
-                                    ""
-                                )
-                    }
-                </p>
-                <input type="text" placeholder='username' defaultValue={currentUser.username}
-                    id='username' className='border p-3 rounded-lg' onChange={handleChange}
-                />
-                <input type="email" placeholder='email' defaultValue={currentUser.email}
-                    id='email' className='border p-3 rounded-lg' onChange={handleChange}
-                />
-                <input type="password" placeholder='password'
-                    id='password' className='border p-3 rounded-lg' onChange={handleChange}
-                />
-                <button disabled={loading} className='bg-slate-700 text-white rounded-lg
-                p-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Cargando...' : 'Actualizar'}
-                </button>
-                <Link className='bg-green-700 text-white rounded-lg p-3  uppercase text-center hover:opacity-95' to={"/create-listing"}>
-                    Tarjetas
-                </Link>
-            </form>
 
-            <div className='flex justify-between mt-5'>
-                <span onClick={handleDeleteUser} className='text-red-700 cursor-pointer'>Eliminar mi cuenta</span>
-                <span onClick={handleSignOut} className='text-red-700 cursor-pointer'>Salir de mi cuenta</span>
+        <div className='bubbles-background-container'>
+            <BubblesBackground />
+            <div className='absolute top-0 left-0 w-full h-full '>
+                
+                <div className='p-3 max-w-lg mx-auto'>
+                    <h1 className=' text-white text-3xl font-semibold text-center my-7'>Perfil</h1>
+                    <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+                        <input onChange={(e) => setFile(e.target.files[0])} type="file" ref={fileRef} hidden accept='image/*' />
+                        <img onClick={() => fileRef.current.click()}
+                            src={formData.avatar || currentUser.avatar} alt="profile"
+                            className='rounded-full h-24 w-24 object-cover
+                cursor-pointer self-center mt-2'/>
+                        <p className='text-sm self-center'>
+                            {fileUploadError ?
+                                (<span className='text-red-600'>
+                                    Error al cargar imagen (la imagen debe ser menor a 2 mb)
+                                </span>)
+                                : filePerc > 0 && filePerc < 100 ? (
+                                    <span className='text-slate-700'>
+                                        {`Subiendo ${filePerc}%`}
+                                    </span>)
+                                    : filePerc === 100 ? (
+                                        <span className='text-green-700'>
+                                            Imagen cargada con éxito!
+                                        </span>)
+                                        : (
+                                            ""
+                                        )
+                            }
+                        </p>
+                        <input type="text" placeholder='username' defaultValue={currentUser.username}
+                            id='username' className='border p-3 rounded-lg' onChange={handleChange}
+                        />
+                        <input type="email" placeholder='email' defaultValue={currentUser.email}
+                            id='email' className='border p-3 rounded-lg' onChange={handleChange}
+                        />
+                        <input type="password" placeholder='password'
+                            id='password' className='border p-3 rounded-lg' onChange={handleChange}
+                        />
+                        <button disabled={loading} className='bg-slate-700 text-white rounded-lg
+                p-3 uppercase hover:opacity-95 disabled:opacity-80'>{loading ? 'Cargando...' : 'Actualizar'}
+                        </button>
+                        <Link className='bg-green-700 text-white rounded-lg p-3  uppercase text-center hover:opacity-95' to={"/create-listing"}>
+                            Publicaciones
+                        </Link>
+                    </form>
+
+                    <div className='flex justify-between mt-5'>
+                        <span onClick={handleDeleteUser} className='text-red-600 cursor-pointer'>Eliminar mi cuenta</span>
+                        <span onClick={handleSignOut} className='text-red-600 cursor-pointer'>Salir de mi cuenta</span>
+                    </div>
+                    <p className='text-red-600 mt-5'>{error ? error : ''}</p>
+                    <p className='text-green-600 mt-5'>{updateSuccess ? 'Actualización Exitosa!' : ''}</p>
+                </div>
             </div>
-            <p className='text-red-700 mt-5'>{error ? error : ''}</p>
-            <p className='text-green-700 mt-5'>{updateSuccess ? 'Actualización Exitosa' : ''}</p>
         </div>
 
     )
