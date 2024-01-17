@@ -39,7 +39,7 @@ export default function Header() {
                             object-cover' src={currentUser.avatar}
                                 alt='profile' />
                         ) : (
-                            <li className='text-slate-700 
+                            <li className='text-white
                             hover:underline'>Ingresar</li>
                         )}
                     </Link>

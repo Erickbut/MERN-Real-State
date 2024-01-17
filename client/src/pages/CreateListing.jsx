@@ -103,7 +103,7 @@ export default function CreateListing() {
 
                             <input type="text" placeholder='Dirección' className='border p-3 rounded-lg' id='address' />
 
-                            <div className='flex flex-wrap justify-center gap-x-12   bg-slate-800 text-white rounded-lg'>
+                            <div className='flex flex-wrap justify-center gap-x-12   bg-slate-700 text-white rounded-lg'>
 
                                 <div className='flex gap-2 mx-4 my-3'>
                                     <select id='sale' className='w-5 text-black'>
