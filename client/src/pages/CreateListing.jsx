@@ -24,6 +24,7 @@ export default function CreateListing() {
         anticretic: [],
         rooms: 0,
         bathrooms: 0,
+        garage: [],
         regularPrice: 0,
         discountPrice: 0
     });
@@ -101,7 +102,7 @@ export default function CreateListing() {
             <div className='absolute top-0 left-0 w-full h-full scrollable-content-container '>
 
                 <main className=' p-3 max-w-4xl mx-auto my-auto'>
-                    <h1 className='text-3xl font-semibold text-center my-7'>
+                    <h1 className='text-3xl font-semibold text-center my-7 text-white'>
                         Crear Inmueble
                     </h1>
                     <form className='flex flex-col sm:flex-row gap-4'>
@@ -163,8 +164,8 @@ export default function CreateListing() {
                                 <div className="flex items-center gap-5">
                                     <span>Garaje:</span>
                                     <select id="garage" className="w-5 text-black">
-                                        <option value="0">Si</option>
-                                        <option value="1">No</option>
+                                        <option value="0"> Si </option>
+                                        <option value="1"> No </option>
                                     </select>
                                 </div>
                                 <div className="flex items-center gap-2">
@@ -179,7 +180,7 @@ export default function CreateListing() {
                                         <p>Precio Oferta:</p>
                                         <span className="text-xs">(Bob / Mes)</span>
                                     </div>
-                                    <input className="p-3 w-40 border-gray-300 rounded-lg ml-2" type="number" id="discountPrice" min="1" max="1000000" />
+                                    <input className="p-3 w-40 border-black rounded-lg ml-2" type="number" id="discountPrice" min="1" max="1000000" />
                                 </div>
                             </div>
                         </div>
@@ -206,12 +207,12 @@ export default function CreateListing() {
 
                             {
                                 formData.imageUrls.length > 0 && formData.imageUrls.map((url, index) => (
-                                    <div key={url} className=' flex justify-between p-3 border items-center rounded-lg'>
+                                    <div key={url} className=' flex justify-between p-3 border items-center rounded-lg border-black'>
                                         <img src={url} alt="listing image" className=' w-24 h-24 object-contain rounded-lg' />
                                         <button
                                             type='button'
                                             onClick={() => handleRemoveImage(index)}
-                                            className='p-3 text-red-600 rounded-lg uppercase hover:opacity-75'>Borrar</button>
+                                            className='p-3 text-black rounded-lg uppercase hover:opacity-75'>Eliminar</button>
                                     </div>
                                 ))
                             }
