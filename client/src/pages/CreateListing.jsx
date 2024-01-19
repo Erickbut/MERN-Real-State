@@ -16,6 +16,16 @@ export default function CreateListing() {
 
     const [formData, setFormData] = useState({
         imageUrls: [],
+        title: '',
+        description: '',
+        address: '',
+        sale: [],
+        rent: [],
+        anticretic: [],
+        rooms: 0,
+        bathrooms: 0,
+        regularPrice: 0,
+        discountPrice: 0
     });
 
     const [imageUploadError, setImageUploadError] = useState(false)
@@ -75,14 +85,14 @@ export default function CreateListing() {
                 }
             );
         });
-    }
+    };
 
     const handleRemoveImage = (index) => {
         setFormData({
             ...formData,
             imageUrls: formData.imageUrls.filter((_, i) => i !== index)
-        })
-    }
+        });
+    };
 
     return (
 
@@ -97,7 +107,7 @@ export default function CreateListing() {
                     <form className='flex flex-col sm:flex-row gap-4'>
                         <div className='flex flex-col gap-4 flex-1'>
 
-                            <input type="text" placeholder='Nombre' className='border p-3 rounded-lg' id='name' maxLength='62' minLength='10' />
+                            <input type="text" placeholder='Título' className='border p-3 rounded-lg' id='title' maxLength='62' minLength='10' />
 
                             <textarea type="text" placeholder='Descripción' className='border p-3 rounded-lg' id='description' />
 
@@ -141,32 +151,35 @@ export default function CreateListing() {
                                 </div>
                             </div>
 
-                            <div className='flex flex-wrap items-center gap-5'>
-                                <div className='flex items-center gap-2'>
+                            <div className="flex flex-col gap-5">
+                                <div className="flex items-center gap-2">
                                     <p>Cuartos:</p>
-                                    <input className='p-3 ml-12 border-gray-300 rounded-lg ' type="number" id='rooms' min="0" max='20' />
+                                    <input className="p-3 border-gray-300 rounded-lg" type="number" id="rooms" min="0" max="20" />
                                 </div>
-                                <div className='flex items-center gap-2'>
+                                <div className="flex items-center gap-2">
                                     <p>Baños:</p>
-                                    <input className='p-3 ml-12 border-gray-300 rounded-lg ' type="number" id='bathrooms' min='1' max='10' />
+                                    <input className="p-3 ml-3 border-gray-300 rounded-lg" type="number" id="bathrooms" min="1" max="10" />
                                 </div>
-                                <div className='flex items-center gap-2'>
-                                    <div className='flex flex-col items-center'>
+                                <div className="flex items-center gap-5">
+                                    <span>Garaje:</span>
+                                    <select id="garage" className="w-5 text-black">
+                                        <option value="0">Si</option>
+                                        <option value="1">No</option>
+                                    </select>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                    <div className="flex flex-col">
                                         <p>Precio Regular:</p>
-                                        <span className='text-xs'>
-                                            (Bob / Mes)
-                                        </span>
+                                        <span className="text-xs">(Bob / Mes)</span>
                                     </div>
-                                    <input className='p-3 border-gray-300 rounded-lg ' type="number" id='regularPrice' min='1' max='10' />
+                                    <input className="p-3 w-40 border-gray-300 rounded-lg" type="number" id="regularPrice" min="1" max="1000000" />
                                 </div>
-                                <div className='flex items-center gap-2'>
-                                    <div className='flex flex-col items-center'>
+                                <div className="flex items-center gap-2">
+                                    <div className="flex flex-col">
                                         <p>Precio Oferta:</p>
-                                        <span className='text-xs'>
-                                            (Bob / Mes)
-                                        </span>
+                                        <span className="text-xs">(Bob / Mes)</span>
                                     </div>
-                                    <input className=' p-3 border-gray-300 rounded-lg' type="number" id='discountPrice' min='1' max='10' />
+                                    <input className="p-3 w-40 border-gray-300 rounded-lg ml-2" type="number" id="discountPrice" min="1" max="1000000" />
                                 </div>
                             </div>
                         </div>
