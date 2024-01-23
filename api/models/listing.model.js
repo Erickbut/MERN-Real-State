@@ -51,10 +51,10 @@ const listingSchema = new mongoose.Schema(
             required: true,
         }
     }, {
-        timestamps:
-        {
-            currentTime: () => new Date(Date.now() - 4 * 60 * 60 * 1000)
-        }
+    timestamps:
+    {
+        currentTime: () => new Date(Date.now() - 4 * 60 * 60 * 1000)
+    }
 }
 );
 
