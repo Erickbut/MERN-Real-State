@@ -298,7 +298,7 @@ export default function CreateListing() {
                                         className="p-3 ml-3 border-gray-300 rounded-lg"
                                         type="number"
                                         id="bathrooms"
-                                        min="1" max="10"
+                                        min="0" max="10"
                                         onChange={handleChange}
                                         value={formData.bathrooms}
                                     />
@@ -352,7 +352,7 @@ export default function CreateListing() {
                                             className="p-3 w-40 border-black rounded-lg ml-2"
                                             type="number"
                                             id="discountPrice"
-                                            min="0" max="1000000"
+                                            min="1" max="1000000"
                                             onChange={handleChange}
                                             value={formData.discountPrice}
                                         />
