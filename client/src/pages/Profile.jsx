@@ -218,12 +218,12 @@ export default function Profile() {
                             disabled={loading}
                             className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-95 disabled:opacity-80'
                         >
-                            {loading ? 'Cargando...' : 'Actualizar'}
+                            {loading ? 'Cargando...' : 'Actualizar Perfil'}
                         </button>
                         <Link className='bg-green-700 text-white rounded-lg p-3  uppercase text-center hover:opacity-95'
                             to={"/create-listing"}
                         >
-                            Publicaciones
+                            Crear Publicación
                         </Link>
                     </form>
 

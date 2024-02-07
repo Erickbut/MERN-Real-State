@@ -134,7 +134,7 @@ export default function Listing() {
                             </div>
 
 
-
+                            80644
 
 
                         </div>
