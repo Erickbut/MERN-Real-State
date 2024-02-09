@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import BubblesBackground from '../styles/BubblesBackground';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
+import { useSelector } from 'react-redux';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import {
@@ -14,6 +15,7 @@ import {
     FaParking,
     FaShare,
 } from 'react-icons/fa';
+import Contact from '../components/Contact';
 
 export default function Listing() {
     SwiperCore.use([Navigation]);
@@ -21,9 +23,10 @@ export default function Listing() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [copied, setCopied] = useState(false);
-
+    const [contact, setContact] = useState(false);
 
     const params = useParams()
+    const { currentUser } = useSelector((state) => state.user);
     useEffect(() => {
         const fetchListing = async () => {
             try {
@@ -60,7 +63,7 @@ export default function Listing() {
                                 {listing.imageUrls.map((url) => (
                                     <SwiperSlide key={url}>
                                         <div
-                                            className='h-[550px]'
+                                            className='h-[600px]'
                                             style={{
                                                 background: `url(${url}) center no-repeat`,
                                                 backgroundSize: 'cover',
@@ -88,7 +91,7 @@ export default function Listing() {
                             )}
 
                             <div className='flex flex-col max-w-4xl mx-auto p-3 my-7 gap-4'>
-                                <p className='text-2xl font-semibold'>
+                                <p className='text-2xl font-semibold capitalize'>
                                     {listing.title} - ${' '}
                                     {listing.offer
                                         ? listing.discountPrice.toLocaleString('en-US')
@@ -131,11 +134,14 @@ export default function Listing() {
                                         {listing.garage === 'si' ? 'Parqueo Privado' : 'Sin Parqueo'}
                                     </li>
                                 </ul>
+                                {currentUser && listing.userRef !== currentUser._id && !contact && (
+                                    <button onClick={() => setContact(true)} className='bg-slate-700 text-white rounded-lg uppercase hover:opacity-95 p-3'>
+                                        Información de Contacto
+                                    </button>
+                                )}
+
+                                {contact && <Contact listing={listing} />}
                             </div>
-
-
-                            80644
-
 
                         </div>
                     )}
