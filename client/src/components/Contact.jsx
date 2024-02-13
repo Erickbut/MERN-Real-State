@@ -32,7 +32,7 @@ export default function Contact({ listing }) {
                         rows="2"
                         value={message}
                         onChange={onChange}
-                        placeholder='Ingrese su mensaje...'
+                        placeholder='Ingrese su mensaje para el correo electrónico...'
                         className='w-full border p-3 rounded-lg'
                     ></textarea>
 
@@ -40,10 +40,14 @@ export default function Contact({ listing }) {
                         to={`mailto:${consigner.email}?subject=Sobre ${listing.title}&body=${message}`}
                         className='bg-slate-700 text-white text-center p-3 uppercase rounded-lg hover:opacity-95 '
                     >
-                        Enviar Mensaje
+                        Enviar Mensaje al correo electrónico
                     </Link>
-
+                    <div className='flex flex-col gap-1 items-center'>
+                        Enviar mensaje por WhatsApp:
+                        <a href="https://wa.link/xepa7n" target="_blank"><img className=' w-10 h-10' src="/wplogo.png" alt="wplogo" /></a>
+                    </div>
                 </div>
+
             )}
         </>
 
